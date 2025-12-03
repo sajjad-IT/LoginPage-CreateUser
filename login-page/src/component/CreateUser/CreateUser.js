@@ -1,103 +1,115 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./CreateUser.css";
 
-const Login = () => {
-  const [user_id, set_user_id] = useState(null);
+const CreateUser = () => {
   const [user_name, set_user_name] = useState("");
   const [first_name, set_first_name] = useState("");
   const [last_name, set_last_name] = useState("");
-  const [password, set_Password] = useState("");
-  const [email_address, set_email_address] = useState("");
+  const [email, setemail] = useState("");
+  const [password, set_password] = useState("");
 
-  const handleRegister = async () => {
+  const navigate = useNavigate();
+
+  const handleRegister = async (e) => {
+    e.preventDefault(); // prevent page reload
+
     try {
-      const formData = new URLSearchParams();
-      formData.append("user_name", user_name);
-      formData.append("first_name", first_name);
-      formData.append("last_name", last_name);
-      formData.append("password", password);
-      formData.append("email_address", email_address);
-
       const res = await fetch(
-        "https://xivra.pk/auth/api/v1/users/create_user.php",
+        "https://cors-anywhere.herokuapp.com/https://xivra.pk/auth/api/v1/users/create_user.php",
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
+            "Content-Type": "application/json",
             Accept: "application/json",
           },
-          body: formData.toString(),
+          body: JSON.stringify({
+            user_name,
+            email,
+            password,
+            first_name,
+            last_name,
+           
+          }),
         }
       );
 
       const data = await res.json();
       console.log(data);
 
-      if (res.ok) {
-        alert("User registered successfully");
+      if (res.ok && data.success) {
+        alert("User Registered Successfully!");
+        navigate("/");
       } else {
-        alert("Failed to register user");
+        alert(data.MESSAGE || "Registration failed");
       }
     } catch (error) {
-      alert("Error registering user: " + error.message);
+      alert("Error: " + error.message);
     }
   };
 
   return (
     <div className="form-container">
       <h2>Register User</h2>
-      <input
-        className="form-input"
-        type="text "
-        value={user_id}
-        placeholder="UserName"
-        onChange={(e) => set_user_id(e.target.value)}
-      />
 
-      <input
-        className="form-input"
-        type="text "
-        value={user_name}
-        placeholder="UserName"
-        onChange={(e) => set_user_name(e.target.value)}
-      />
-      <input
-        className="form-input"
-        type="text"
-        value={first_name}
-        placeholder="first Name"
-        onChange={(e) => set_first_name(e.target.value)}
-      />
+      <form onSubmit={handleRegister}>
+        <input
+          className="form-input"
+          type="text"
+          placeholder="User Name"
+          value={user_name}
+          onChange={(e) => set_user_name(e.target.value)}
+          required
+        />
 
-      <input
-        className="form-input"
-        type="text"
-        value={last_name}
-        placeholder="last Name"
-        onChange={(e) => set_last_name(e.target.value)}
-      />
-      <input
-        className="form-input"
-        type="email"
-        value={email_address}
-        placeholder="email"
-        onChange={(e) => set_email_address(e.target.value)}
-      />
-      <input
-        className="form-input"
-        type="password"
-        value={password}
-        placeholder="Password"
-        onChange={(e) => set_Password(e.target.value)}
-      />
+        <input
+          className="form-input"
+          type="email"
+          placeholder="Email Address"
+          value={email}
+          onChange={(e) => setemail(e.target.value)}
+          required
+        />
 
-      {/* <input className='form-input' type="tel" placeholder='Phone Number' onChange={(e)=>SetPhone(e.target.value)} /> */}
+        <input
+          className="form-input"
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => set_password(e.target.value)}
+          required
+        />
 
-      <button className="form-btn" onClick={handleRegister}>
-        Register
-      </button>
+        <input
+          className="form-input"
+          type="text"
+          placeholder="First Name"
+          value={first_name}
+          onChange={(e) => set_first_name(e.target.value)}
+          required
+        />
+
+        <input
+          className="form-input"
+          type="text"
+          placeholder="Last Name"
+          value={last_name}
+          onChange={(e) => set_last_name(e.target.value)}
+          required
+        />
+
+        
+
+        <button className="form-btn" type="submit">
+          Register
+        </button>
+      </form>
+
+      <p className="link-text">
+        Already have an account? <Link to="/">Login</Link>
+      </p>
     </div>
   );
 };
 
-export default Login;
+export default CreateUser;
