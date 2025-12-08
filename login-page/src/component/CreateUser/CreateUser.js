@@ -6,7 +6,7 @@ const CreateUser = () => {
   const [user_name, set_user_name] = useState("");
   const [first_name, set_first_name] = useState("");
   const [last_name, set_last_name] = useState("");
-  const [email, setemail] = useState("");
+  const [email_address, set_email_address] = useState("");
   const [password, set_password] = useState("");
 
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ const CreateUser = () => {
           },
           body: JSON.stringify({
             user_name,
-            email,
+            email_address,
             password,
             first_name,
             last_name,
@@ -66,8 +66,8 @@ const CreateUser = () => {
           className="form-input"
           type="email"
           placeholder="Email Address"
-          value={email}
-          onChange={(e) => setemail(e.target.value)}
+          value={email_address}
+          onChange={(e) => set_email_address(e.target.value)}
           required
         />
 

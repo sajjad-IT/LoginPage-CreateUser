@@ -1,0 +1,14 @@
+.topbar {
+  margin-left: 250px;
+  height: 60px;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  border-bottom: 1px solid #ddd;
+}
+
+.profile {
+  cursor: pointer;
+}

@@ -31,13 +31,13 @@ const LoginPage = () => {
       const data = await res.json();
       console.log(data);
 
-      if (res.ok && data.success) {
+      if (res.ok && (data.success || data.status || data.MESSAGE === "Login successful")) {
         alert("Login Successful");
 
         localStorage.setItem("token", data.token);
         localStorage.setItem("user_name", data.user_name);
 
-        navigate("/dashboard");
+        navigate("/dashboard"); // NOW WORKS ✔
       } else {
         setErrorMsg(data.MESSAGE || "Invalid credentials");
       }
