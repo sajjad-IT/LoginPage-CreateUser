@@ -1,0 +1,58 @@
+.withdrawal-limit {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.withdrawal-limit .progress-bar .progress-fill {
+  background: linear-gradient(90deg, #ff6b6b, #ff4757);
+}
+
+.recent-withdrawals {
+  margin-top: 30px;
+}
+
+.recent-withdrawals h4 {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #1e2a3a;
+}
+
+.withdrawals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.withdrawal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  border-left: 4px solid #ff4757;
+}
+
+.withdrawal-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.withdrawal-name {
+  font-weight: 600;
+  color: #1e2a3a;
+  margin-bottom: 5px;
+}
+
+.withdrawal-date {
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+.withdrawal-amount {
+  font-weight: 700;
+  color: #ff4757;
+  font-size: 1.1rem;
+}

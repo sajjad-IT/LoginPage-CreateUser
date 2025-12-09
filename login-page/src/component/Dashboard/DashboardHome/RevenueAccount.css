@@ -1,0 +1,103 @@
+.revenue-account {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.revenue-amount .amount {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2ecc71;
+}
+
+.money-actions {
+  display: flex;
+  gap: 15px;
+  margin: 25px 0;
+}
+
+.money-action-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 15px;
+  border-radius: 10px;
+  border: 2px solid #e8e8e8;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.money-action-btn:hover {
+  border-color: #4a9eff;
+  transform: translateY(-2px);
+}
+
+.money-action-btn svg {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.money-action-btn.move-money svg {
+  color: #4a9eff;
+}
+
+.money-action-btn.send-money svg {
+  color: #ff6b6b;
+}
+
+.money-action-btn span {
+  font-weight: 600;
+  color: #1e2a3a;
+}
+
+.transfer-details {
+  margin-top: 30px;
+}
+
+.transfer-details h4 {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #1e2a3a;
+}
+
+.transfer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  color: #5a6c7d;
+  font-weight: 500;
+}
+
+.form-group select,
+.form-group input {
+  padding: 12px 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: white;
+}
+
+.form-group select:focus,
+.form-group input:focus {
+  outline: none;
+  border-color: #4a9eff;
+}
+
+.transfer-btn {
+  margin-top: 10px;
+  padding: 14px;
+  font-size: 1rem;
+}
